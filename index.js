@@ -5,7 +5,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use();
+app.use(logger);
 
 app.use(function(req, res, next) {
     console.log('Authenticating...');
