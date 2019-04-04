@@ -5,6 +5,16 @@ const Joi = require('joi');
 const logger = require('./logger');
 const express = require('express');
 const app = express();
+const startupDebugger = require('debug')('app:startup');
+const dbDebugger = require('debug')('app:db');
+
+if(app.get('env') === 'development') {
+    app.use(morgan('tiny'));
+    startupDebugger('Morgan enabled...');
+}
+
+//Db work...
+dbDebugger('Connected to the database...');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
